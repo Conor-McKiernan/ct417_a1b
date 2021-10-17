@@ -10,9 +10,19 @@ pipeline {
             }
         }
 
-        stage ('Testing stage'){
+        stage ('Testing Stage'){
             steps {
+                withGradle {
+                    sh './gradlew test'
+                }
+            }
+        }
 
+        stage ('War Stage'){
+            steps {
+                withGradle {
+                    sh './gradlew war'
+                }
             }
         }
     }
